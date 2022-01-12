@@ -1,18 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid, Button, Stepper, Step, StepLabel } from '@material-ui/core';
 import { Upload } from './pages/Upload.js';
 import { Verify } from './pages/Verify.js';
 import './style.css';
 
+const buttons = ['Upload', 'Verify', 'Modify Logic'];
+
 export default function App() {
   const [page, setPage] = useState('upload');
+  const [step, setStep] = useState(1);
+
+  useEffect(() => {
+    setStep(buttons.indexOf(page));
+  }, [page]);
+
   return (
     <>
-      <Button onClick={() => setPage('upload')}>Upload</Button>
-      <Button onClick={() => setPage('verify')}>Verify</Button>
-      <hr />
+      <div style={{ background: 'black', opacity: 0.75 }}>
+        {buttons.map((b) => (
+          <Button color="primary" onClick={() => setPage(b)}>
+            {b}
+          </Button>
+        ))}
+      </div>
 
-      <Stepper activeStep={page === 'upload' ? 0 : page === 'verify' ? 1 : 0}>
+      <Stepper activeStep={step}>
         <Step>
           <StepLabel>Upload</StepLabel>
         </Step>
@@ -20,18 +32,17 @@ export default function App() {
           <StepLabel>Verify</StepLabel>
         </Step>
         <Step>
-          <StepLabel>Modify</StepLabel>
+          <StepLabel>Modify Logic</StepLabel>
         </Step>
         <Step>
           <StepLabel>Submit</StepLabel>
         </Step>
       </Stepper>
-      <br />
-      <br />
-      <br />
-      <br />
-      <div>{page === 'upload' && <Upload />}</div>
-      <div>{page === 'verify' && <Verify />}</div>
+      <hr style={{ margin: '3rem' }} />
+      <Grid container justify="center">
+        <div>{page === 'Upload' && <Upload />}</div>
+        <div>{page === 'Verify' && <Verify />}</div>
+      </Grid>
     </>
   );
 }
