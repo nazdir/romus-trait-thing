@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Grid, Button, Stepper, Step, StepLabel } from '@material-ui/core';
 import { Upload } from './pages/Upload.js';
 import { Verify } from './pages/Verify.js';
+import { Modify } from './pages/Modify.js';
 import './style.css';
 
-const buttons = ['Upload', 'Verify', 'Modify Logic'];
+const buttons = ['Upload', 'Verify', 'Modify'];
 
 export default function App() {
   const [page, setPage] = useState('upload');
@@ -42,6 +43,7 @@ export default function App() {
       <Grid container justify="center">
         <div>{page === 'Upload' && <Upload />}</div>
         <div>{page === 'Verify' && <Verify />}</div>
+        <div>{page === 'Modify' && <Modify />}</div>
       </Grid>
     </>
   );

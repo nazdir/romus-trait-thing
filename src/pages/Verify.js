@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Grid,
   Button,
@@ -15,24 +15,34 @@ function createData(name, A, B, C, D) {
   return { id, name, A, B, C, D };
 }
 
-const rows = [
-  createData('Product A', 159, 6.0, 24, 4.0),
-  createData('Product B', 237, 9.0, 37, 4.3),
-  createData('Product C', 262, 16.0, 24, 6.0),
-  createData('Product D', 305, 3.7, 67, 4.3),
-  createData('Product E', 356, 16.0, 49, 3.9),
-];
-
 export const Verify = () => {
+  const [group, setGroup] = useState('Zone');
+
+  const coeffs = {
+    Zone: 0.1,
+    Trait: 4,
+    Brand: 3.2,
+  };
+
+  const c = coeffs[group];
+
+  const rows = [
+    createData(`${group} A`, 159 * c, 6.0 * c, 24 * c, 4.0 * c),
+    createData(`${group} B`, 237 * c, 9.0 * c, 37 * c, 4.3 * c),
+    createData(`${group} C`, 262 * c, 16.0 * c, 24 * c, 6.0 * c),
+    createData(`${group} D`, 305 * c, 3.7 * c, 67 * c, 4.3 * c),
+    createData(`${group} E`, 356 * c, 16.0 * c, 49 * c, 3.9 * c),
+  ];
+
   return (
     <>
       <Grid container justify="center">
-        <Button>Zone</Button>
-        <Button>Trait</Button>
-        <Button>Brand</Button>
+        <Button onClick={() => setGroup('Zone')}>Zone</Button>
+        <Button onClick={() => setGroup('Trait')}>Trait</Button>
+        <Button onClick={() => setGroup('Brand')}>Brand</Button>
       </Grid>
 
-      <Table>
+      <Table style={{ width: '100%' }}>
         <TableHead>
           <TableRow>
             <TableCell>Stuff</TableCell>
@@ -48,10 +58,18 @@ export const Verify = () => {
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell align="right">{row.A}</TableCell>
-              <TableCell align="right">{row.B}</TableCell>
-              <TableCell align="right">{row.C}</TableCell>
-              <TableCell align="right">{row.D}</TableCell>
+              <TableCell align="right">
+                {Math.floor(row.A * 100) / 100}
+              </TableCell>
+              <TableCell align="right">
+                {Math.floor(row.B * 100) / 100}
+              </TableCell>
+              <TableCell align="right">
+                {Math.floor(row.C * 100) / 100}
+              </TableCell>
+              <TableCell align="right">
+                {Math.floor(row.D * 100) / 100}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
