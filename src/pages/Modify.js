@@ -16,9 +16,9 @@ import {
 } from '@material-ui/core';
 
 let id = 0;
-function createData(name, A, B, C, D) {
+function createData(name, logic, B, C, D) {
   id += 1;
-  return { id, name, A, B, C, D };
+  return { id, name, logic, B, C, D };
 }
 
 const rows = [
@@ -37,8 +37,10 @@ export const Modify = () => {
         <TableHead>
           <TableRow>
             <TableCell align="center">Trait</TableCell>
-            <TableCell align="center">Logic</TableCell>
+            <TableCell align="center">Core Trait</TableCell>
+            <TableCell align="center">Final Trait</TableCell>
             <TableCell align="center">Edit</TableCell>
+            <TableCell align="center">Logic</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -47,9 +49,11 @@ export const Modify = () => {
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell>{row.A}</TableCell>
+              <TableCell>{row.B}</TableCell>
+              <TableCell>{row.C}</TableCell>
+              <TableCell>{row.logic}</TableCell>
               <TableCell align="center">
-                <Button onClick={() => setOpen(true)}>Edit</Button>
+                <Button onClick={() => setOpen(true)}>Edit Logic</Button>
               </TableCell>
             </TableRow>
           ))}
