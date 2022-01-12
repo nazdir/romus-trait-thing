@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Grid,
   Button,
@@ -7,6 +7,12 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  TextField,
+  DialogActions,
 } from '@material-ui/core';
 
 let id = 0;
@@ -24,6 +30,7 @@ const rows = [
 ];
 
 export const Modify = () => {
+  const [open, setOpen] = useState(false);
   return (
     <>
       <Table>
@@ -42,12 +49,38 @@ export const Modify = () => {
               </TableCell>
               <TableCell>{row.A}</TableCell>
               <TableCell align="center">
-                <Button>Edit</Button>
+                <Button onClick={() => setOpen(true)}>Edit</Button>
               </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
+
+      <Dialog open={open} aria-labelledby="form-dialog-title" fullWidth>
+        <DialogTitle id="form-dialog-title">Modify Logic</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Enter new logic I guess? I have no idea how this works so this is
+            probably going to be very different actually.
+          </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Logic"
+            type="text"
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setOpen(false)} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={() => setOpen(false)} color="primary">
+            Save
+          </Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 };
