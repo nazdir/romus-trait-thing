@@ -34,12 +34,19 @@ export const Verify = () => {
     createData(`${group} E`, 356 * c, 16.0 * c, 49 * c, 3.9 * c),
   ];
 
+  const groups = ['Zone', 'Trait', 'Brand'];
+
   return (
     <>
       <Grid container justify="center">
-        <Button onClick={() => setGroup('Zone')}>Zone</Button>
-        <Button onClick={() => setGroup('Trait')}>Trait</Button>
-        <Button onClick={() => setGroup('Brand')}>Brand</Button>
+        {groups.map((g) => (
+          <Button
+            color={group === g ? 'primary' : null}
+            onClick={() => setGroup(g)}
+          >
+            {g}
+          </Button>
+        ))}
       </Grid>
 
       <Table style={{ width: '100%' }}>
