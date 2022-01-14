@@ -5,20 +5,20 @@ import { Verify } from './pages/Verify.js';
 import { Modify } from './pages/Modify.js';
 import './style.css';
 
-const buttons = ['Upload', 'Verify', 'Modify'];
+const steps = ['Import', 'Create Pricing Rules', 'Verify'];
 
 export default function App() {
   const [page, setPage] = useState('upload');
   const [step, setStep] = useState(1);
 
   useEffect(() => {
-    setStep(buttons.indexOf(page));
+    setStep(steps.indexOf(page));
   }, [page]);
 
   return (
     <>
       <div style={{ background: 'black', opacity: 0.75 }}>
-        {buttons.map((b) => (
+        {steps.map((b) => (
           <Button color="primary" onClick={() => setPage(b)}>
             {b}
           </Button>
@@ -26,18 +26,11 @@ export default function App() {
       </div>
 
       <Stepper activeStep={step}>
-        <Step>
-          <StepLabel>Upload</StepLabel>
-        </Step>
-        <Step>
-          <StepLabel>Verify</StepLabel>
-        </Step>
-        <Step>
-          <StepLabel>Modify Logic</StepLabel>
-        </Step>
-        <Step>
-          <StepLabel>Submit</StepLabel>
-        </Step>
+        {steps.map((s) => (
+          <Step>
+            <StepLabel>{s}</StepLabel>
+          </Step>
+        ))}
       </Stepper>
       <hr style={{ margin: '3rem' }} />
       <Grid container justify="center">
