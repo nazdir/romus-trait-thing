@@ -16,47 +16,32 @@ function createData(name, A, B, C, D) {
 }
 
 export const Verify = () => {
-  const [group, setGroup] = useState('Zone');
-
   const coeffs = {
     Zone: 0.1,
     Trait: 4,
     Brand: 3.2,
   };
 
-  const c = coeffs[group];
-
   const rows = [
-    createData(`${group} A`, 159 * c, 6.0 * c, 24 * c, 4.0 * c),
-    createData(`${group} B`, 237 * c, 9.0 * c, 37 * c, 4.3 * c),
-    createData(`${group} C`, 262 * c, 16.0 * c, 24 * c, 6.0 * c),
-    createData(`${group} D`, 305 * c, 3.7 * c, 67 * c, 4.3 * c),
-    createData(`${group} E`, 356 * c, 16.0 * c, 49 * c, 3.9 * c),
+    createData(`Trait A`, 159, 6.0, 24, 4.0),
+    createData(`Trait B`, 237, 9.0, 37, 4.3),
+    createData(`Trait C`, 262, 16.0, 24, 6.0),
+    createData(`Trait D`, 305, 3.7, 67, 4.3),
+    createData(`Trait E`, 356, 16.0, 49, 3.9),
   ];
 
   const groups = ['Zone', 'Trait', 'Brand'];
 
   return (
     <>
-      <Grid container justify="center">
-        {groups.map((g) => (
-          <Button
-            color={group === g ? 'primary' : null}
-            onClick={() => setGroup(g)}
-          >
-            {g}
-          </Button>
-        ))}
-      </Grid>
-
       <Table style={{ width: '100%' }}>
         <TableHead>
           <TableRow>
-            <TableCell>Stuff</TableCell>
-            <TableCell align="right">Junk</TableCell>
-            <TableCell align="right">Things</TableCell>
-            <TableCell align="right">Wosit</TableCell>
-            <TableCell align="right">Dohickie</TableCell>
+            <TableCell>Trait</TableCell>
+            <TableCell align="right">Zone 1</TableCell>
+            <TableCell align="right">Zone 2</TableCell>
+            <TableCell align="right">Zone 3</TableCell>
+            <TableCell align="right">Zone 4</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
