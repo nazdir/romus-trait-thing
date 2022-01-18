@@ -29,7 +29,7 @@ const rows = [
   createData('Trait E', 'Ducksquach', 16.0, 49, 3.9),
 ];
 
-export const Modify = () => {
+export const Create = () => {
   const [open, setOpen] = useState(false);
   return (
     <>
