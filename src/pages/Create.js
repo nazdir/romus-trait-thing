@@ -37,7 +37,7 @@ export const Create = () => {
         <TableHead>
           <TableRow>
             <TableCell align="center">Trait</TableCell>
-            <TableCell align="center">Core Trait</TableCell>
+            <TableCell align="center">Base Trait</TableCell>
             <TableCell align="center">Final Trait</TableCell>
             <TableCell align="center">Logic</TableCell>
             <TableCell align="center"></TableCell>
