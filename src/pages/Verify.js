@@ -45,8 +45,6 @@ export const Verify = () => {
         <Grid item>
           <Grid container direction="row" alignItems="center">
             <Switch
-              // checkedIcon={<MdLock />}
-              icon={<MdLockOpen />}
               value={locked}
               onChange={() => {
                 setLocked(!locked);
