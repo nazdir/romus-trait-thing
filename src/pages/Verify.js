@@ -45,7 +45,7 @@ export const Verify = () => {
           <Grid container direction="row" alignItems="center">
             <Switch
               value={locked}
-              onChange={(e) => {
+              onChange={() => {
                 setLocked(!locked);
                 setTimestamp(moment().format('LLLL'));
               }}
