@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import {
   Grid,
   Button,
+  Switch,
   TableHead,
   Table,
   TableRow,
   TableCell,
   TableBody,
+  Typography,
 } from '@material-ui/core';
+import moment from 'moment';
 
 let id = 0;
 function createData(name, A, B, C, D) {
@@ -16,6 +19,9 @@ function createData(name, A, B, C, D) {
 }
 
 export const Verify = () => {
+  const [locked, setLocked] = useState(false);
+  const [timestamp, setTimestamp] = useState();
+
   const coeffs = {
     Zone: 0.1,
     Trait: 4,
@@ -34,69 +40,86 @@ export const Verify = () => {
 
   return (
     <>
-      <Table style={{ width: '100%' }}>
-        <TableHead>
-          <TableRow>
-            <TableCell align="center"></TableCell>
-            <TableCell align="center" colSpan={2}>
-              Zone 1
-            </TableCell>
-            <TableCell align="center" colSpan={2}>
-              Zone 2
-            </TableCell>
-            <TableCell align="center" colSpan={2}>
-              Zone 3
-            </TableCell>
-            <TableCell align="center" colSpan={2}>
-              Zone 4
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell align="center">Trait</TableCell>
-            <TableCell align="center">Core</TableCell>
-            <TableCell align="center">Final</TableCell>
-            <TableCell align="center">Core</TableCell>
-            <TableCell align="center">Final</TableCell>
-            <TableCell align="center">Core</TableCell>
-            <TableCell align="center">Final</TableCell>
-            <TableCell align="center">Core</TableCell>
-            <TableCell align="center">Final</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">
-                {Math.floor(row.A * 100) / 100}
-              </TableCell>
-              <TableCell align="right">
-                {Math.floor(row.B * 100) / 100}
-              </TableCell>
-              <TableCell align="right">
-                {Math.floor(row.C * 100) / 100}
-              </TableCell>
-              <TableCell align="right">
-                {Math.floor(row.D * 100) / 100}
-              </TableCell>
-              <TableCell align="right">
-                {Math.floor(row.A * 100 * 2.1) / 100}
-              </TableCell>
-              <TableCell align="right">
-                {Math.floor(row.B * 100 * 2.1) / 100}
-              </TableCell>
-              <TableCell align="right">
-                {Math.floor(row.C * 100 * 2.1) / 100}
-              </TableCell>
-              <TableCell align="right">
-                {Math.floor(row.D * 100 * 2.1) / 100}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+      <Grid column direction="column">
+        <Grid item>
+          <Grid container direction="row" alignItems="center">
+            <Switch
+              value={locked}
+              onChange={(e) => {
+                setLocked(!locked);
+                setTimestamp(moment().format('LLLL'));
+              }}
+            ></Switch>
+            <Typography>{locked ? `Locked on ${timestamp}` : ''}</Typography>
+          </Grid>
+        </Grid>
+        <Grid item>
+          <Table style={{ width: '100%' }}>
+            <TableHead>
+              <TableRow>
+                <TableCell align="center" rowSpan={2}>
+                  Trait
+                </TableCell>
+                <TableCell align="center" colSpan={2}>
+                  Zone 1
+                </TableCell>
+                <TableCell align="center" colSpan={2}>
+                  Zone 2
+                </TableCell>
+                <TableCell align="center" colSpan={2}>
+                  Zone 3
+                </TableCell>
+                <TableCell align="center" colSpan={2}>
+                  Zone 4
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align="center">Base</TableCell>
+                <TableCell align="center">Final</TableCell>
+                <TableCell align="center">Base</TableCell>
+                <TableCell align="center">Final</TableCell>
+                <TableCell align="center">Base</TableCell>
+                <TableCell align="center">Final</TableCell>
+                <TableCell align="center">Base</TableCell>
+                <TableCell align="center">Final</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <TableRow key={row.id}>
+                  <TableCell component="th" scope="row">
+                    {row.name}
+                  </TableCell>
+                  <TableCell align="right">
+                    {Math.floor(row.A * 100) / 100}
+                  </TableCell>
+                  <TableCell align="right">
+                    {Math.floor(row.B * 100) / 100}
+                  </TableCell>
+                  <TableCell align="right">
+                    {Math.floor(row.C * 100) / 100}
+                  </TableCell>
+                  <TableCell align="right">
+                    {Math.floor(row.D * 100) / 100}
+                  </TableCell>
+                  <TableCell align="right">
+                    {Math.floor(row.A * 100 * 2.1) / 100}
+                  </TableCell>
+                  <TableCell align="right">
+                    {Math.floor(row.B * 100 * 2.1) / 100}
+                  </TableCell>
+                  <TableCell align="right">
+                    {Math.floor(row.C * 100 * 2.1) / 100}
+                  </TableCell>
+                  <TableCell align="right">
+                    {Math.floor(row.D * 100 * 2.1) / 100}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </Grid>
+      </Grid>
     </>
   );
 };
