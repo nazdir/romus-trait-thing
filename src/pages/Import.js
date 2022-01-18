@@ -8,6 +8,10 @@ import {
   Grid,
   Button,
   TableHead,
+  ExpansionPanel,
+  ExpansionPanelSummary,
+  ExpansionPanelDetails,
+  Typography,
   Table,
   TableRow,
   TableCell,
@@ -19,6 +23,8 @@ import {
   TextField,
   DialogActions,
 } from '@material-ui/core';
+
+import { MdExpandMore } from 'react-icons';
 
 let id = 0;
 function createData(name, A, B, C, D) {
@@ -38,8 +44,48 @@ const rows = [
   createData('Trait E', 16.0, 49, 3.9, 9.7),
 ];
 
+const markets = ['DEKALB', 'Sasquach', 'Duck', 'Ducksquach'];
+
+const Tabel = () => {
+  return (
+    <Table style={{ width: '100%' }}>
+      <TableHead>
+        <TableRow>
+          <TableCell align="center">Trait</TableCell>
+          {rows[0].data.map((d, idx) => (
+            <TableCell align="center">{`Zone ${idx + 1}`}</TableCell>
+          ))}
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {rows.map((row) => (
+          <TableRow key={row.id}>
+            <TableCell component="th" scope="row">
+              {row.name}
+            </TableCell>
+
+            {row.data.map((d) => (
+              <TableCell align="right">
+                <TextField
+                  id="standard-name"
+                  value={Math.floor(d * 100) / 100}
+                  margin="normal"
+                >
+                  {Math.floor(d * 100) / 100}
+                </TextField>
+                {/* {Math.floor(d * 100) / 100} */}
+              </TableCell>
+            ))}
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
+};
+
 export const Import = () => {
   const [file, setFile] = useState();
+  const [expanded, setExpanded] = useState('');
   return (
     <>
       <Grid container spacing={2} direction="row">
@@ -62,39 +108,22 @@ export const Import = () => {
         <Grid item style={{ flexGrow: 1 }}>
           <Button variant="contained">Save Base</Button>
         </Grid>
-      </Grid>
-      <Table style={{ width: '100%' }}>
-        <TableHead>
-          <TableRow>
-            <TableCell align="center">Trait</TableCell>
-            {rows[0].data.map((d, idx) => (
-              <TableCell align="center">{`Zone ${idx + 1}`}</TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
 
-              {row.data.map((d) => (
-                <TableCell align="right">
-                  <TextField
-                    id="standard-name"
-                    value={Math.floor(d * 100) / 100}
-                    margin="normal"
-                  >
-                    {Math.floor(d * 100) / 100}
-                  </TextField>
-                  {/* {Math.floor(d * 100) / 100} */}
-                </TableCell>
-              ))}
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+        {markets.map((m) => (
+          <ExpansionPanel
+            expanded={expanded === m}
+            onChange={() => setExpanded(m)}
+          >
+            <ExpansionPanelSummary expandIcon={<MdExpandMore />}>
+              <Typography>General settings</Typography>
+              <Typography>I am an expansion panel</Typography>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <Tabel />
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
+        ))}
+      </Grid>
     </>
   );
 };
