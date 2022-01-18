@@ -11,8 +11,8 @@ import {
   TableRow,
   TextField,
   Typography,
-} from "@material-ui/core";
-import React, { useState } from "react";
+} from '@material-ui/core';
+import React, { useState } from 'react';
 
 let id = 0;
 function createData(name, A, B, C, D) {
@@ -25,18 +25,18 @@ function createData(name, A, B, C, D) {
 }
 
 const rows = [
-  createData("Trait A", 6.0, 24, 4.0, 5),
-  createData("Trait B", 9.0, 37, 4.3, 6),
-  createData("Trait C", 16.0, 24, 6.0, 6.1),
-  createData("Trait D", 3.7, 67, 4.3, 8.2),
-  createData("Trait E", 16.0, 49, 3.9, 9.7),
+  createData('Trait A', 6.0, 24, 4.0, 5),
+  createData('Trait B', 9.0, 37, 4.3, 6),
+  createData('Trait C', 16.0, 24, 6.0, 6.1),
+  createData('Trait D', 3.7, 67, 4.3, 8.2),
+  createData('Trait E', 16.0, 49, 3.9, 9.7),
 ];
 
-const markets = ["DEKALB", "Sasquach", "Duck", "Ducksquach"];
+const markets = ['DEKALB', 'Sasquach', 'Duck', 'Ducksquach'];
 
 const Tabel = () => {
   return (
-    <Table style={{ width: "100%" }}>
+    <Table style={{ width: '100%' }}>
       <TableHead>
         <TableRow>
           <TableCell align="center" width="100px">
@@ -75,46 +75,46 @@ const Tabel = () => {
 
 export const Import = () => {
   const [file, setFile] = useState();
-  const [panel, setPanel] = useState("");
+  const [panel, setPanel] = useState('');
   return (
-    <Grid container>
-      <Grid container spacing={40}>
+    <Grid container spacing={40}>
+      <Grid container>
         <Grid item>
           <input
             accept="image/*"
             id="contained-button-file"
             multiple
             type="file"
-            style={{ display: "none" }}
+            style={{ display: 'none' }}
             onChange={(e) => setFile(e.target.value)}
           />
           <label htmlFor="contained-button-file">
             <Button variant="contained" component="span">
               Upload New File
             </Button>
-            <TextField style={{ minWidth: 500 }} value={file} />
+            <TextField style={{ minWidth: 500, padding: 20 }} value={file} />
           </label>
         </Grid>
 
         <Grid item>
           <Button variant="contained">Save Base</Button>
         </Grid>
+      </Grid>
 
-        <Grid item>
-          {markets.map((m) => (
-            <ExpansionPanel
-              expanded={panel === m}
-              onChange={panel === m ? () => setPanel() : () => setPanel(m)}
-            >
-              <ExpansionPanelSummary>
-                <Typography>{m}</Typography>
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
-                <Tabel />
-              </ExpansionPanelDetails>
-            </ExpansionPanel>
-          ))}
-        </Grid>
+      <Grid item>
+        {markets.map((m) => (
+          <ExpansionPanel
+            expanded={panel === m}
+            onChange={panel === m ? () => setPanel() : () => setPanel(m)}
+          >
+            <ExpansionPanelSummary>
+              <Typography>{m}</Typography>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <Tabel />
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
+        ))}
       </Grid>
     </Grid>
   );

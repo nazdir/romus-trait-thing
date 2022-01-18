@@ -1,20 +1,20 @@
-import { Grid, ListItem, ListItemText } from "@material-ui/core";
-import React, { useState } from "react";
-import { Create } from "./modals/Create.js";
-import { Base } from "./pages/Base.js";
-import { Import } from "./pages/Import.js";
-import { Verify } from "./pages/Verify.js";
-import "./style.css";
+import { Grid, ListItem, ListItemText } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Create } from './modals/Create.js';
+import { Base } from './pages/Base.js';
+import { Import } from './pages/Import.js';
+import { Verify } from './pages/Verify.js';
+import './style.css';
 
 export default function App() {
-  const [page, setPage] = useState("upload");
+  const [page, setPage] = useState('upload');
   const [open, setOpen] = useState(false);
 
   const steps = [
-    { name: "Base", component: <Base /> },
-    { name: "Import", component: <Import /> },
-    { name: "Create Pricing Rules", onClick: () => setOpen(true) },
-    { name: "Verify", component: <Verify /> },
+    { name: 'Base', component: <Base /> },
+    { name: 'Import & Modify', component: <Import /> },
+    { name: 'Create Pricing Rules', onClick: () => setOpen(true) },
+    { name: 'Verify', component: <Verify /> },
   ];
 
   return (
@@ -31,7 +31,7 @@ export default function App() {
             </ListItem>
           ))}
         </Grid>
-        <Grid item style={{ padding: "32px" }} justify="center">
+        <Grid item style={{ padding: '32px' }} justify="center">
           {steps.map((s) => (
             <div key={s.name}>{page === s.name && s.component}</div>
           ))}
