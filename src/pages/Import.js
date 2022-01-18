@@ -87,9 +87,9 @@ export const Import = () => {
   const [file, setFile] = useState();
   const [panel, setPanel] = useState('');
   return (
-    <>
+    <Grid container>
       <Grid container spacing={40}>
-        <Grid item style={{ flexGrow: 1 }}>
+        <Grid item>
           <input
             accept="image/*"
             id="contained-button-file"
@@ -106,7 +106,7 @@ export const Import = () => {
           </label>
         </Grid>
 
-        <Grid item style={{ flexGrow: 1 }}>
+        <Grid item>
           <Button variant="contained">Save Base</Button>
         </Grid>
 
@@ -126,6 +126,6 @@ export const Import = () => {
           ))}
         </Grid>
       </Grid>
-    </>
+    </Grid>
   );
 };
