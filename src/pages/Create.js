@@ -25,7 +25,7 @@ const rows = [
   createData('Trait A', '12% gross up', 6.0, 24, 4.0),
   createData('Trait B', '5% something or another', 9.0, 37, 4.3),
   createData('Trait C', 'words that makes sense', 16.0, 24, 6.0),
-  createData('Trait D', '8% herpy flerb', 3.7, 67, 4.3),
+  createData('Trait D', '', 3.7, 67, 4.3),
   createData('Trait E', 'Ducksquach', 16.0, 49, 3.9),
 ];
 
@@ -39,8 +39,8 @@ export const Create = () => {
             <TableCell align="center">Trait</TableCell>
             <TableCell align="center">Core Trait</TableCell>
             <TableCell align="center">Final Trait</TableCell>
-            <TableCell align="center">Edit</TableCell>
             <TableCell align="center">Logic</TableCell>
+            <TableCell align="center"></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -49,11 +49,13 @@ export const Create = () => {
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell>{row.B}</TableCell>
-              <TableCell>{row.C}</TableCell>
+              <TableCell align="right">{row.B}</TableCell>
+              <TableCell align="right">{row.C}</TableCell>
               <TableCell>{row.logic}</TableCell>
               <TableCell align="center">
-                <Button onClick={() => setOpen(true)}>Edit Logic</Button>
+                <Button onClick={() => setOpen(true)}>
+                  {row.logic !== '' ? 'Edit Logic' : 'Add Logic'}
+                </Button>
               </TableCell>
             </TableRow>
           ))}

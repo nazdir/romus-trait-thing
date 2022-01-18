@@ -37,11 +37,30 @@ export const Verify = () => {
       <Table style={{ width: '100%' }}>
         <TableHead>
           <TableRow>
-            <TableCell>Trait</TableCell>
-            <TableCell align="right">Zone 1</TableCell>
-            <TableCell align="right">Zone 2</TableCell>
-            <TableCell align="right">Zone 3</TableCell>
-            <TableCell align="right">Zone 4</TableCell>
+            <TableCell align="center"></TableCell>
+            <TableCell align="center" colSpan={2}>
+              Zone 1
+            </TableCell>
+            <TableCell align="center" colSpan={2}>
+              Zone 2
+            </TableCell>
+            <TableCell align="center" colSpan={2}>
+              Zone 3
+            </TableCell>
+            <TableCell align="center" colSpan={2}>
+              Zone 4
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell align="center">Trait</TableCell>
+            <TableCell align="center">Core</TableCell>
+            <TableCell align="center">Final</TableCell>
+            <TableCell align="center">Core</TableCell>
+            <TableCell align="center">Final</TableCell>
+            <TableCell align="center">Core</TableCell>
+            <TableCell align="center">Final</TableCell>
+            <TableCell align="center">Core</TableCell>
+            <TableCell align="center">Final</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -61,6 +80,18 @@ export const Verify = () => {
               </TableCell>
               <TableCell align="right">
                 {Math.floor(row.D * 100) / 100}
+              </TableCell>
+              <TableCell align="right">
+                {Math.floor(row.A * 100 * 2.1) / 100}
+              </TableCell>
+              <TableCell align="right">
+                {Math.floor(row.B * 100 * 2.1) / 100}
+              </TableCell>
+              <TableCell align="right">
+                {Math.floor(row.C * 100 * 2.1) / 100}
+              </TableCell>
+              <TableCell align="right">
+                {Math.floor(row.D * 100 * 2.1) / 100}
               </TableCell>
             </TableRow>
           ))}
