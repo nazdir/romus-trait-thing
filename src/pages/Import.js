@@ -24,7 +24,7 @@ import {
   DialogActions,
 } from '@material-ui/core';
 
-import { MdExpandMore } from 'react-icons';
+import { MdExpandMore } from 'react-icons/md';
 
 let id = 0;
 function createData(name, A, B, C, D) {
@@ -85,7 +85,7 @@ const Tabel = () => {
 
 export const Import = () => {
   const [file, setFile] = useState();
-  const [expanded, setExpanded] = useState('');
+  const [panel, setPanel] = useState('');
   return (
     <>
       <Grid container spacing={2} direction="row">
@@ -110,17 +110,16 @@ export const Import = () => {
         </Grid>
 
         {markets.map((m) => (
-          <ExpansionPanel
-            expanded={expanded === m}
-            onChange={() => setExpanded(m)}
-          >
-            <ExpansionPanelSummary expandIcon={<MdExpandMore />}>
+          <ExpansionPanel expanded={panel === m} onChange={() => setPanel(m)}>
+            {/* <ExpansionPanelSummary 
+            // expandIcon={<MdExpandMore 
+            />}>
               <Typography>General settings</Typography>
               <Typography>I am an expansion panel</Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
               <Tabel />
-            </ExpansionPanelDetails>
+            </ExpansionPanelDetails> */}
           </ExpansionPanel>
         ))}
       </Grid>
