@@ -1,14 +1,13 @@
-import React from 'react';
-import React, { useState, useEffect } from 'react';
 import {
+  Button,
   Dialog,
-  DialogTitle,
+  DialogActions,
   DialogContent,
   DialogContentText,
+  DialogTitle,
   TextField,
-  Button,
-  DialogActions,
-} from '@material-ui/core';
+} from "@material-ui/core";
+import { default as React, default as React } from "react";
 
 export const Create = ({ open, setOpen }) => (
   <Dialog open={open} aria-labelledby="form-dialog-title" fullWidth>
