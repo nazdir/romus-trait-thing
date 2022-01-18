@@ -3,7 +3,7 @@ import { Grid, Button, TextField, MenuItem } from '@material-ui/core';
 
 export const Upload = () => {
   return (
-    <>
+    <div>
       <input
         accept="image/*"
         id="contained-button-file"
@@ -16,6 +16,6 @@ export const Upload = () => {
           Upload
         </Button>
       </label>
-    </>
+    </div>
   );
 };
