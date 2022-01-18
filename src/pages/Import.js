@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { Create } from './Create.js';
 import {
   Grid,
   Button,
   TextField,
-  MenuItem,
   Grid,
   Button,
   TableHead,
@@ -16,15 +14,7 @@ import {
   TableRow,
   TableCell,
   TableBody,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  TextField,
-  DialogActions,
 } from '@material-ui/core';
-
-import { MdExpandMore } from 'react-icons/md';
 
 let id = 0;
 function createData(name, A, B, C, D) {
@@ -51,7 +41,9 @@ const Tabel = () => {
     <Table style={{ width: '100%' }}>
       <TableHead>
         <TableRow>
-          <TableCell align="center">Trait</TableCell>
+          <TableCell align="center" width="100px">
+            Trait
+          </TableCell>
           {rows[0].data.map((d, idx) => (
             <TableCell align="center">{`Zone ${idx + 1}`}</TableCell>
           ))}

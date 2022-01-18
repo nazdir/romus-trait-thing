@@ -14,7 +14,6 @@ import {
   Typography,
 } from '@material-ui/core';
 import moment from 'moment';
-import { FaUnlock } from 'react-icons/fa';
 
 let id = 0;
 function createData(name, A, B, C, D) {
@@ -127,10 +126,9 @@ export const Verify = () => {
               onChange={panel === m ? () => setPanel() : () => setPanel(m)}
             >
               <ExpansionPanelSummary>
-                <FaUnlock />
                 <Typography>
                   {isLocked[m] && (
-                    <span style={{ marginRight: 24 }}>LOCK ICON</span>
+                    <span style={{ marginRight: 24 }}>lock icon here</span>
                   )}
                   {m}
                 </Typography>
