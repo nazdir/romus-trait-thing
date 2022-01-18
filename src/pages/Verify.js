@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from 'react';
 import {
+  ExpansionPanel,
+  ExpansionPanelDetails,
+  ExpansionPanelSummary,
   Grid,
   Switch,
-  TableHead,
   Table,
-  TableRow,
-  TableCell,
   TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
   Typography,
-  ExpansionPanel,
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
-  Typography,
-} from '@material-ui/core';
-import moment from 'moment';
+} from "@material-ui/core";
+import moment from "moment";
+import React, { useEffect, useState } from "react";
 
 let id = 0;
 function createData(name, A, B, C, D) {
@@ -21,7 +20,7 @@ function createData(name, A, B, C, D) {
   return { id, name, A, B, C, D };
 }
 
-const markets = ['DEKALB', 'Sasquach', 'Duck', 'Ducksquach'];
+const markets = ["DEKALB", "Sasquach", "Duck", "Ducksquach"];
 
 const Tabel = () => {
   const rows = [
@@ -33,7 +32,7 @@ const Tabel = () => {
   ];
 
   return (
-    <Table style={{ width: '100%' }}>
+    <Table style={{ width: "100%" }}>
       <TableHead>
         <TableRow>
           <TableCell align="center" rowSpan={2}>
@@ -104,16 +103,16 @@ const Locked = ({ setIsLocked, name, allLocked }) => {
         value={locked}
         onChange={() => {
           setLocked(!locked);
-          setTimestamp(moment().format('LLLL'));
+          setTimestamp(moment().format("LLLL"));
         }}
       ></Switch>
-      <Typography>{locked ? `Locked on ${timestamp}` : ''}</Typography>
+      <Typography>{locked ? `Locked on ${timestamp}` : ""}</Typography>
     </>
   );
 };
 
 export const Verify = () => {
-  const [panel, setPanel] = useState('');
+  const [panel, setPanel] = useState("");
   const [isLocked, setIsLocked] = useState({});
 
   return (

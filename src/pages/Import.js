@@ -1,20 +1,18 @@
-import React, { useState } from 'react';
 import {
-  Grid,
   Button,
-  TextField,
-  Grid,
-  Button,
-  TableHead,
   ExpansionPanel,
-  ExpansionPanelSummary,
   ExpansionPanelDetails,
-  Typography,
+  ExpansionPanelSummary,
+  Grid,
   Table,
-  TableRow,
-  TableCell,
   TableBody,
-} from '@material-ui/core';
+  TableCell,
+  TableHead,
+  TableRow,
+  TextField,
+  Typography,
+} from "@material-ui/core";
+import React, { useState } from "react";
 
 let id = 0;
 function createData(name, A, B, C, D) {
@@ -27,18 +25,18 @@ function createData(name, A, B, C, D) {
 }
 
 const rows = [
-  createData('Trait A', 6.0, 24, 4.0, 5),
-  createData('Trait B', 9.0, 37, 4.3, 6),
-  createData('Trait C', 16.0, 24, 6.0, 6.1),
-  createData('Trait D', 3.7, 67, 4.3, 8.2),
-  createData('Trait E', 16.0, 49, 3.9, 9.7),
+  createData("Trait A", 6.0, 24, 4.0, 5),
+  createData("Trait B", 9.0, 37, 4.3, 6),
+  createData("Trait C", 16.0, 24, 6.0, 6.1),
+  createData("Trait D", 3.7, 67, 4.3, 8.2),
+  createData("Trait E", 16.0, 49, 3.9, 9.7),
 ];
 
-const markets = ['DEKALB', 'Sasquach', 'Duck', 'Ducksquach'];
+const markets = ["DEKALB", "Sasquach", "Duck", "Ducksquach"];
 
 const Tabel = () => {
   return (
-    <Table style={{ width: '100%' }}>
+    <Table style={{ width: "100%" }}>
       <TableHead>
         <TableRow>
           <TableCell align="center" width="100px">
@@ -77,7 +75,7 @@ const Tabel = () => {
 
 export const Import = () => {
   const [file, setFile] = useState();
-  const [panel, setPanel] = useState('');
+  const [panel, setPanel] = useState("");
   return (
     <Grid container>
       <Grid container spacing={40}>
@@ -87,7 +85,7 @@ export const Import = () => {
             id="contained-button-file"
             multiple
             type="file"
-            style={{ display: 'none' }}
+            style={{ display: "none" }}
             onChange={(e) => setFile(e.target.value)}
           />
           <label htmlFor="contained-button-file">
