@@ -88,7 +88,7 @@ export const Import = () => {
   const [panel, setPanel] = useState('');
   return (
     <>
-      <Grid container spacing={2} direction="row">
+      <Grid container spacing={40}>
         <Grid item style={{ flexGrow: 1 }}>
           <input
             accept="image/*"
@@ -105,23 +105,26 @@ export const Import = () => {
             <TextField style={{ minWidth: 500 }} value={file} />
           </label>
         </Grid>
+
         <Grid item style={{ flexGrow: 1 }}>
           <Button variant="contained">Save Base</Button>
         </Grid>
 
-        {markets.map((m) => (
-          <ExpansionPanel expanded={panel === m} onChange={() => setPanel(m)}>
-            {/* <ExpansionPanelSummary 
-            // expandIcon={<MdExpandMore 
-            />}>
-              <Typography>General settings</Typography>
-              <Typography>I am an expansion panel</Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Tabel />
-            </ExpansionPanelDetails> */}
-          </ExpansionPanel>
-        ))}
+        <Grid item>
+          {markets.map((m) => (
+            <ExpansionPanel
+              expanded={panel === m}
+              onChange={panel === m ? () => setPanel() : () => setPanel(m)}
+            >
+              <ExpansionPanelSummary>
+                <Typography>{m}</Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <Tabel />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+          ))}
+        </Grid>
       </Grid>
     </>
   );

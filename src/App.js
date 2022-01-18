@@ -42,7 +42,12 @@ export default function App() {
             </ListItem>
           ))}
         </Grid>
-        <Grid item style={{ flexGrow: 1, padding: '32px' }} justify="center">
+        <Grid
+          container
+          item
+          style={{ flexGrow: 1, padding: '32px' }}
+          justify="center"
+        >
           {steps.map((s) => (
             <div key={s.name}>{page === s.name && s.component}</div>
           ))}
