@@ -11,6 +11,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import moment from 'moment';
+import { MdLock, MdLockOpen } from 'react-icons';
 
 let id = 0;
 function createData(name, A, B, C, D) {
@@ -44,6 +45,8 @@ export const Verify = () => {
         <Grid item>
           <Grid container direction="row" alignItems="center">
             <Switch
+              // checkedIcon={<MdLock />}
+              icon={<MdLockOpen />}
               value={locked}
               onChange={() => {
                 setLocked(!locked);
