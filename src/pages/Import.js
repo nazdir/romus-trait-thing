@@ -32,7 +32,7 @@ const rows = [
   createData('Trait E', 16.0, 49, 3.9, 9.7),
 ];
 
-const markets = ['DEKALB', 'Sasquach', 'Duck', 'Ducksquach'];
+
 
 const Tabel = () => {
   return (
