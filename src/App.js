@@ -4,13 +4,14 @@ import {
   ListItemText,
   List,
   Collapse,
+  ListItemIcon,
 } from '@material-ui/core';
 import React, { useState } from 'react';
 import { Create } from './modals/Create.js';
-import { Base } from './pages/Base.js';
 import { Import } from './pages/Import.js';
 import { Verify } from './pages/Verify.js';
 import './style.css';
+import LockOpen from '@material-ui/icons/LockOpen';
 
 const markets = ['DEKALB', 'Sasquatch', 'Duck', 'Ducksquatch'];
 
@@ -25,7 +26,10 @@ export default function App() {
     {
       name: 'Verify',
       component: <Verify />,
-      onClick: () => setExpand(!expand),
+      onClick: () => {
+        setExpand(!expand);
+        setPage('Verify');
+      },
     },
   ];
 
@@ -45,7 +49,10 @@ export default function App() {
             ))}
             <Collapse in={expand}>
               {markets.map((m) => (
-                <ListItem style={{ paddingLeft: 40 }}>
+                <ListItem>
+                  <ListItemIcon>
+                    <LockOpen />
+                  </ListItemIcon>
                   <ListItemText>{m}</ListItemText>
                 </ListItem>
               ))}

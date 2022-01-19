@@ -1,8 +1,5 @@
 import {
   Button,
-  ExpansionPanel,
-  ExpansionPanelDetails,
-  ExpansionPanelSummary,
   Grid,
   Switch,
   Table,
@@ -109,7 +106,7 @@ const PricingRules = () => (
   <Table>
     <TableHead>
       <TableRow>
-        <TableCell>Market</TableCell>
+        {/* <TableCell>Market</TableCell> */}
         <TableCell>Trait</TableCell>
         <TableCell>Rule</TableCell>
         <TableCell />
@@ -118,7 +115,7 @@ const PricingRules = () => (
     <TableBody>
       {rules.map((r) => (
         <TableRow>
-          <TableCell>{r.market}</TableCell>
+          {/* <TableCell>{r.market}</TableCell> */}
           <TableCell>{r.trait}</TableCell>
           <TableCell>{r.rule}</TableCell>
           <TableCell>
@@ -150,51 +147,29 @@ const Locked = ({ setIsLocked, name, allLocked }) => {
   );
 };
 
-export const Verify = () => {
+export const Verify = ({ market }) => {
   const [panel, setPanel] = useState('');
   const [isLocked, setIsLocked] = useState({});
 
   return (
     <>
       <Grid item>
-        {markets.map((m) => (
-          <ExpansionPanel
-            expanded={panel === m}
-            onChange={panel === m ? () => setPanel() : () => setPanel(m)}
-          >
-            <ExpansionPanelSummary>
-              <Typography>
-                {isLocked[m] && (
-                  <span style={{ marginRight: 24 }}>lock icon here</span>
-                )}
-                {m}
-              </Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Grid container>
-                <Grid item>
-                  <Grid container direction="row" alignItems="center">
-                    <Locked
-                      name={m}
-                      allLocked={isLocked}
-                      setIsLocked={setIsLocked}
-                    />
-                  </Grid>
-                  <Tabel />
-                </Grid>
-              </Grid>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-        ))}
+        <Grid container>
+          <Grid item>
+            <Grid container direction="row" alignItems="center">
+              <Locked
+                name={market ?? 'Ducksquatch'}
+                allLocked={isLocked}
+                setIsLocked={setIsLocked}
+              />
+            </Grid>
+            <Tabel />
+          </Grid>
+        </Grid>
       </Grid>
-      <Typography variant="h6" style={{ marginTop: 100 }}>
-        Current Rules
-      </Typography>
-      <Grid item>
+
+      <Grid item style={{ marginTop: 100 }}>
         <PricingRules />
-      </Grid>
-      <Grid item>
-        <MissingRules />
       </Grid>
     </>
   );

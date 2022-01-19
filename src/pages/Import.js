@@ -1,16 +1,11 @@
 import {
   Button,
-  ExpansionPanel,
-  ExpansionPanelDetails,
-  ExpansionPanelSummary,
-  Grid,
   Table,
   TableBody,
   TableCell,
   TableHead,
   TableRow,
   TextField,
-  Typography,
 } from '@material-ui/core';
 import React, { useState } from 'react';
 
@@ -20,7 +15,8 @@ function createData(name, A, B, C, D) {
   return {
     id,
     name,
-    data: [A, B, C, D, A * 1.1, B * 0.98, C * 1.9, A + B / C],
+    // data: [A, B, C, D, A * 1.1, B * 0.98, C * 1.9, A + B / C],
+    data: [A, B, C, D, A * 1.1],
   };
 }
 
@@ -32,11 +28,9 @@ const rows = [
   createData('Trait E', 16.0, 49, 3.9, 9.7),
 ];
 
-
-
 const Tabel = () => {
   return (
-    <Table style={{ width: '100%' }}>
+    <Table style={{ width: '100%', margin: 40 }}>
       <TableHead>
         <TableRow>
           <TableCell align="center" width="100px">
@@ -63,7 +57,6 @@ const Tabel = () => {
                 >
                   {Math.floor(d * 100) / 100}
                 </TextField>
-                {/* {Math.floor(d * 100) / 100} */}
               </TableCell>
             ))}
           </TableRow>
@@ -77,30 +70,23 @@ export const Import = () => {
   const [file, setFile] = useState();
   const [panel, setPanel] = useState('');
   return (
-    <Grid container spacing={40}>
-      <Grid container>
-        <Grid item>
-          <input
-            accept="image/*"
-            id="contained-button-file"
-            multiple
-            type="file"
-            style={{ display: 'none' }}
-            onChange={(e) => setFile(e.target.value)}
-          />
-          <label htmlFor="contained-button-file">
-            <Button variant="contained" component="span">
-              Upload New File
-            </Button>
-            <TextField style={{ minWidth: 500, padding: 20 }} value={file} />
-          </label>
-        </Grid>
-
-        <Grid item>
-          <Button variant="contained">Save Base</Button>
-        </Grid>
-      </Grid>
+    <>
+      <input
+        accept="image/*"
+        id="contained-button-file"
+        multiple
+        type="file"
+        style={{ display: 'none' }}
+        onChange={(e) => setFile(e.target.value)}
+      />
+      <label htmlFor="contained-button-file">
+        <Button variant="contained" component="span">
+          Upload New File
+        </Button>
+        <TextField style={{ minWidth: 500, padding: 20 }} value={file} />
+      </label>
       <Tabel />
-    </Grid>
+      <Button variant="contained">Save Base</Button>
+    </>
   );
 };
