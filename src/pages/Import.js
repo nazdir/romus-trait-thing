@@ -7,9 +7,13 @@ import {
   TableRow,
   TextField,
   Typography,
-  Grid
+  Grid,
+  Checkbox,
+  FormGroup,
+  FormControlLabel,
 } from '@material-ui/core';
 import React, { useState } from 'react';
+import { markets } from '../data.js';
 
 let id = 0;
 function createData(name, A, B, C, D) {
@@ -71,16 +75,15 @@ const Tabel = () => {
 export const Import = () => {
   const [file, setFile] = useState();
   const [panel, setPanel] = useState('');
+  const [checked, setChecked] = useState({});
   return (
     <>
-      <Typography variant="h6">US / Corn / 2077</Typography>
-      <Grid direction="row">
-        <Checkbox>A</Checkbox>
-        <Checkbox>B</Checkbox>
-        <Checkbox>C</Checkbox>
-        <Checkbox>D</Checkbox>
-        <Checkbox>E</Checkbox>
-      </Grid>
+      <Typography variant="body1">US / Corn / 2077</Typography>
+      <FormGroup row style={{ marginBottom: 40 }}>
+        {markets.map((m) => (
+          <FormControlLabel control={<Checkbox name={m} />} label={m} />
+        ))}
+      </FormGroup>
       <input
         accept="image/*"
         id="contained-button-file"

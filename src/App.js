@@ -12,8 +12,9 @@ import { Import } from './pages/Import.js';
 import { Verify } from './pages/Verify.js';
 import './style.css';
 // import { Lock, LockOpen } from '@material-ui/icons';
+import { markets } from './data.js';
 
-const markets = ['DEKALB', 'Sasquatch', 'Duck', 'Ducksquatch'];
+// export const markets = ['DEKALB', 'Sasquatch', 'Duck', 'Ducksquatch'];
 
 export default function App() {
   const [page, setPage] = useState('upload');

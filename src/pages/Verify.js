@@ -18,8 +18,6 @@ function createData(name, A, B, C, D) {
   return { id, name, A, B, C, D };
 }
 
-const markets = ['DEKALB', 'Sasquach', 'Duck', 'Ducksquach'];
-
 const rules = [
   {
     market: 'DEKALB',
@@ -131,7 +129,9 @@ const Locked = ({ setAllLocked, market, allLocked }) => {
   const [locked, setLocked] = useState(allLocked[market]);
   const [timestamp, setTimestamp] = useState();
 
-  useEffect(() => setAllLocked({ ...allLocked, [market]: locked }), [locked]);
+  // useEffect(() => setAllLocked({ ...allLocked, [market]: locked }), [locked]);
+
+  useEffect(() => setLocked(allLocked[market]), [market]);
 
   return (
     <>
