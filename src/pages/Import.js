@@ -6,6 +6,8 @@ import {
   TableHead,
   TableRow,
   TextField,
+  Typography,
+  Grid
 } from '@material-ui/core';
 import React, { useState } from 'react';
 
@@ -71,6 +73,14 @@ export const Import = () => {
   const [panel, setPanel] = useState('');
   return (
     <>
+      <Typography variant="h6">US / Corn / 2077</Typography>
+      <Grid direction="row">
+        <Checkbox>A</Checkbox>
+        <Checkbox>B</Checkbox>
+        <Checkbox>C</Checkbox>
+        <Checkbox>D</Checkbox>
+        <Checkbox>E</Checkbox>
+      </Grid>
       <input
         accept="image/*"
         id="contained-button-file"

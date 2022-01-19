@@ -127,11 +127,11 @@ const PricingRules = () => (
   </Table>
 );
 
-const Locked = ({ setIsLocked, name, allLocked }) => {
-  const [locked, setLocked] = useState(false);
+const Locked = ({ setAllLocked, market, allLocked }) => {
+  const [locked, setLocked] = useState(allLocked[market]);
   const [timestamp, setTimestamp] = useState();
 
-  useEffect(() => setIsLocked({ ...allLocked, [name]: locked }), [locked]);
+  useEffect(() => setAllLocked({ ...allLocked, [market]: locked }), [locked]);
 
   return (
     <>

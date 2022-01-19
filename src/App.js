@@ -11,7 +11,7 @@ import { Create } from './modals/Create.js';
 import { Import } from './pages/Import.js';
 import { Verify } from './pages/Verify.js';
 import './style.css';
-import { Lock, LockOpen } from '@material-ui/icons';
+// import { Lock, LockOpen } from '@material-ui/icons';
 
 const markets = ['DEKALB', 'Sasquatch', 'Duck', 'Ducksquatch'];
 
@@ -27,7 +27,13 @@ export default function App() {
     { name: 'Create Pricing Rules', onClick: () => setOpen(true) },
     {
       name: 'Verify',
-      component: <Verify />,
+      component: (
+        <Verify
+          market={market}
+          allLocked={allLocked}
+          setAllLocked={setAllLocked}
+        />
+      ),
       onClick: () => {
         setExpand(!expand);
         setPage('Verify');
@@ -53,7 +59,7 @@ export default function App() {
               {markets.map((m) => (
                 <ListItem button onClick={() => setMarket(m)}>
                   <ListItemIcon>
-                    {allLocked[m] ? <Lock /> : <LockOpen />}
+                    {/* {allLocked[m] ? <Lock /> : <LockOpen />} */}
                   </ListItemIcon>
                   <ListItemText>{m}</ListItemText>
                 </ListItem>
