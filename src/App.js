@@ -11,7 +11,7 @@ import { Create } from './modals/Create.js';
 import { Import } from './pages/Import.js';
 import { Verify } from './pages/Verify.js';
 import './style.css';
-import LockOpen from '@material-ui/icons/LockOpen';
+import { Lock, LockOpen } from '@material-ui/icons';
 
 const markets = ['DEKALB', 'Sasquatch', 'Duck', 'Ducksquatch'];
 
@@ -19,6 +19,8 @@ export default function App() {
   const [page, setPage] = useState('upload');
   const [open, setOpen] = useState(false);
   const [expand, setExpand] = useState(false);
+  const [market, setMarket] = useState();
+  const [allLocked, setAllLocked] = useState({});
 
   const steps = [
     { name: 'Base', component: <Import /> },
@@ -49,9 +51,9 @@ export default function App() {
             ))}
             <Collapse in={expand}>
               {markets.map((m) => (
-                <ListItem>
+                <ListItem button onClick={() => setMarket(m)}>
                   <ListItemIcon>
-                    <LockOpen />
+                    {allLocked[m] ? <Lock /> : <LockOpen />}
                   </ListItemIcon>
                   <ListItemText>{m}</ListItemText>
                 </ListItem>
