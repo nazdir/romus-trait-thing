@@ -6,12 +6,23 @@ import {
   DialogContentText,
   DialogTitle,
   TextField,
+  FormControl,
+  InputLabel,
+  Select,
 } from '@material-ui/core';
 import { default as React, default as React } from 'react';
+import { markets } from '../data.js';
 
 const Content = () => (
   <>
-    <Button>ROCK</Button>
+    <FormControl className={classes.formControl}>
+      <InputLabel id="demo-simple-select-label">Market</InputLabel>
+      <Select labelId="demo-simple-select-label" id="demo-simple-select">
+        {markets.map((m) => (
+          <MenuItem value={m}>{m}</MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   </>
 );
 

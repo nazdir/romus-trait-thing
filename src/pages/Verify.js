@@ -148,7 +148,6 @@ const Locked = ({ setAllLocked, market, allLocked }) => {
 };
 
 export const Verify = ({ market }) => {
-  const [panel, setPanel] = useState('');
   const [isLocked, setIsLocked] = useState({});
 
   return (

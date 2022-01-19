@@ -11,10 +11,8 @@ import { Create } from './modals/Create.js';
 import { Import } from './pages/Import.js';
 import { Verify } from './pages/Verify.js';
 import './style.css';
-// import { Lock, LockOpen } from '@material-ui/icons';
+import { Lock, LockOpen } from '@material-ui/icons';
 import { markets } from './data.js';
-
-// export const markets = ['DEKALB', 'Sasquatch', 'Duck', 'Ducksquatch'];
 
 export default function App() {
   const [page, setPage] = useState('upload');
@@ -60,7 +58,7 @@ export default function App() {
               {markets.map((m) => (
                 <ListItem button onClick={() => setMarket(m)}>
                   <ListItemIcon>
-                    {/* {allLocked[m] ? <Lock /> : <LockOpen />} */}
+                    {allLocked[m] ? <Lock /> : <LockOpen />}
                   </ListItemIcon>
                   <ListItemText>{m}</ListItemText>
                 </ListItem>
