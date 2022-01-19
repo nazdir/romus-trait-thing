@@ -100,22 +100,7 @@ export const Import = () => {
           <Button variant="contained">Save Base</Button>
         </Grid>
       </Grid>
-
-      <Grid item>
-        {markets.map((m) => (
-          <ExpansionPanel
-            expanded={panel === m}
-            onChange={panel === m ? () => setPanel() : () => setPanel(m)}
-          >
-            <ExpansionPanelSummary>
-              <Typography>{m}</Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Tabel />
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-        ))}
-      </Grid>
+      <Tabel />
     </Grid>
   );
 };

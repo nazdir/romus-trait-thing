@@ -36,21 +36,6 @@ const rules = [
   },
 ];
 
-const missing = [
-  {
-    market: 'DEKALB',
-    traits: ['Trait A', 'Trait C', 'Trait D', 'Trait E'],
-  },
-  {
-    market: 'Sasquach',
-    traits: ['all'],
-  },
-  {
-    market: 'Duck',
-    traits: ['all'],
-  },
-];
-
 const Tabel = () => {
   const rows = [
     createData(`Trait A`, 159, 6.0, 24, 4.0),
@@ -145,29 +130,6 @@ const PricingRules = () => (
   </Table>
 );
 
-const MissingRules = () => (
-  <Table>
-    <TableHead>
-      <TableRow>
-        <TableCell>Market</TableCell>
-        <TableCell>Trait</TableCell>
-        <TableCell />
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      {missing.map((r) => (
-        <TableRow>
-          <TableCell>{r.market}</TableCell>
-          <TableCell>{r.traits.join(', ')}</TableCell>
-          <TableCell>
-            <Button>ADD</Button>
-          </TableCell>
-        </TableRow>
-      ))}
-    </TableBody>
-  </Table>
-);
-
 const Locked = ({ setIsLocked, name, allLocked }) => {
   const [locked, setLocked] = useState(false);
   const [timestamp, setTimestamp] = useState();
@@ -231,9 +193,6 @@ export const Verify = () => {
       <Grid item>
         <PricingRules />
       </Grid>
-      <Typography variant="h6" style={{ marginTop: 100 }}>
-        Missing Rules
-      </Typography>
       <Grid item>
         <MissingRules />
       </Grid>

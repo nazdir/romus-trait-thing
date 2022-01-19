@@ -1,5 +1,10 @@
-import React from "react";
+import React from 'react';
+import { Import } from './Import';
 
 export const Base = () => {
-  return <div>last year's stuff</div>;
+  return (
+    <>
+      <Import />
+    </>
+  );
 };
